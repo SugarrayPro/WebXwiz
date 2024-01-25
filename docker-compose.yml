@@ -4,8 +4,8 @@ services:
   app:
     build: .
     image: webxwiz
-    environment:
-      - DB_URI=mongodb://mongo1:27017/webxwiz?replicaSet=rs0&directConnection=true
+    env_file:
+      - .env
     restart: unless-stopped
     command: pnpm run dev
     links:
