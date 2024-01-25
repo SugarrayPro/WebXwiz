@@ -1,5 +1,7 @@
-FROM node:lts-alpine AS base
-RUN npm i -g pnpm
+FROM node:lts AS base
+
+RUN corepack enable
+RUN corepack prepare pnpm@latest-8 --activate
 
 WORKDIR /src
 COPY package.json pnpm-lock.yaml /src/

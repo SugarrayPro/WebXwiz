@@ -9,17 +9,19 @@ const MAX_ENTRIES_RANDOMIZED = 10;
 const GENERATE_FREQUENCY_MS = 200;
 
 try {
-  console.log("[db] Connected to MongoDB");
   await mongoose.connect(process.env.DB_URI || DEFAULT_MONGO_URI);
+  console.log("[db] Connected to MongoDB");
 } catch (e) {
-  console.log(e);
+  console.error(e);
 }
 
 const app: Express = express();
 const port = process.env.PORT || DEFAULT_PORT;
 
 app.listen(port, () => {
-  console.log(`[server]: Server is running at http://localhost:${port}`);
+  console.log(
+    `[server]: Server is running, check your collections to see them populated`,
+  );
 });
 
 setInterval(function () {
@@ -28,12 +30,13 @@ setInterval(function () {
   const records = Array.from({ length: numberOfEntries }).map(() =>
     generateRecord(),
   );
-  customerModel.bulkSave(records);
+  void customerModel.bulkSave(records);
 }, GENERATE_FREQUENCY_MS);
 
 const changeSteam = customerModel.watch();
 
 changeSteam.on("change", (next) => {
+  console.log("Got a next document", next.fullDocument);
   const anonymizedCustomer = generateAnonymizedRecord(next.fullDocument);
-  anonymizedCustomer.save();
+  void anonymizedCustomer.save();
 });
