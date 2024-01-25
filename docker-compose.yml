@@ -7,7 +7,6 @@ services:
     env_file:
       - .env
     restart: unless-stopped
-    command: pnpm run dev
     links:
       - mongo1
     depends_on:

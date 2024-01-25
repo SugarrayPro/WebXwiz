@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "node --env-file=.env --import=tsx --watch server.mts",
+    "dev": "pnpm tsx --watch --no-warnings server.mts",
+    "start": "node --import 'data:text/javascript,import { register } from \"node:module\"; import { pathToFileURL } from \"node:url\"; register(\"ts-node/esm\", pathToFileURL(\"./\"));' server.mts",
     "prettier": "prettier --write .",
     "prepare": "husky",
     "lint-staged": "lint-staged"
