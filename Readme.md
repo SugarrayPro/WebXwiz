@@ -1,21 +1,26 @@
-# Webxwiz test assignment
+# Webxwiz Test Assignment
 
 ## Installation & Development
-Replace .env-example with an .env file, or change environment variables on docker-compose.yml file
 
-Make sure you make a connection string with replicaSet and directConnection parameter as true
+### Environment Setup
+1. Rename .env-example to .env and populate it with your specific settings. Alternatively, you can directly modify the environment variables in the docker-compose.yml file.
+2. Ensure your MongoDB connection string includes the replicaSet and directConnection parameters set to true.
 
-After, run the app with [`docker compose`](https://docs.docker.com/compose/):
+### Running the Application
+Execute the following command to start the application using Docker:
+Bash
+
+
 
-``
-$ docker-compose up 
-``
+$ docker-compose up
 
-### Resume
-Time spent: around 6hrs
 
-Struggles and difficulties:
-    I guess the main one was to set up a local replicaset in MongoDB for change streams feature to use. Unfortunately there's no ways to
-set up replicaset in 'easy' way for every dev environment without overkilling assignment with migrations or skills.
-    
-Besides that, one thing that's worth mentioning is type juggling across the app, its always is :)
+## Summary
+
+### Time Investment
+The total time spent on this assignment was approximately 6 hours.
+
+### Challenges Encountered
+- MongoDB Local ReplicaSet Configuration: The primary challenge was setting up a local replicaSet in MongoDB to utilize the change streams feature. It's worth noting that there isn't a universally straightforward method to configure a replica set across different development environments without potentially overcomplicating the setup with extensive migrations or specific skill requirements.
+
+- Type Juggling: Managing data types across the application proved to be a noteworthy challenge, as it often is in software development, requiring careful attention to detail and robust error handling.
