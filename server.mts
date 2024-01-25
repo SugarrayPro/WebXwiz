@@ -9,7 +9,7 @@ const MAX_ENTRIES_RANDOMIZED = 10;
 const GENERATE_FREQUENCY_MS = 200;
 
 try {
-            console.log("[db] Connected to MongoDB");
+  console.log("[db] Connected to MongoDB");
   await mongoose.connect(process.env.DB_URI || DEFAULT_MONGO_URI);
 } catch (e) {
   console.log(e);

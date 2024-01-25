@@ -37,7 +37,7 @@
   },
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx,mts}": [
-      "npx prettier"
+      "npm run prettier"
     ]
   }
 }
